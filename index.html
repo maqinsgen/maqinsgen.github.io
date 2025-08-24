@@ -450,17 +450,17 @@
     <section id="experience" class="section">
         <h2 class="section-title" data-aos="fade-up" data-lang-key="experience_title">创业经历</h2>
         <div class="grid-container">
-            <div class="card" data-aos="fade-up">
+            <div class="card clickable" data-aos="fade-up" data-modal-target="modal-exp-1">
                 <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=Campus+Service" alt="Campus Service" class="card-image">
                 <h3 data-lang-key="exp1_title">校园个性化信息服务系统 (析数科技)</h3>
                 <p class="date" data-lang-key="exp1_date">2023 - 至今 | 项目负责人</p>
-                <p data-lang-key="exp1_desc">主导开发“析数”微信小程序，基于推荐算法与大数据分析，实现校园信息的个性化精准推送，提升信息触达效率。</p>
+                <p data-lang-key="exp1_brief">主导开发“析数”微信小程序，实现校园信息的个性化精准推送... [点击查看详情]</p>
             </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="100" data-modal-target="modal-exp-2">
                 <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=Sharing+Economy" alt="Sharing Economy" class="card-image">
                 <h3 data-lang-key="exp2_title">共享用工平台开发 (随程)</h3>
                 <p class="date" data-lang-key="exp2_date">2023 - 至今 | 项目负责人</p>
-                <p data-lang-key="exp2_desc">设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。</p>
+                <p data-lang-key="exp2_brief">设计并推进“随程”共享用工平台，解决企业灵活用工需求... [点击查看详情]</p>
             </div>
         </div>
     </section>
@@ -537,6 +537,20 @@
             <p data-lang-key="modal_p4_desc2"><strong>核心方法:</strong> DTGS深度耦合了基于RetinexNet的热成像增强模块和3DGS重建管线。其核心创新包含一个用于适应光照变化的<strong>外观变换函数(ATF)</strong>、一个处理热成像伪影的<strong>热校正模块(TCM)</strong>，以及一个动态循环的联合优化训练策略。</p>
             <p data-lang-key="modal_p4_desc3"><strong>贡献与成果:</strong> 我们构建了一个全新的、具有挑战性的低光照热成像多视图数据集。实验证明，DTGS在几何精度和视觉质量上均显著优于现有SOTA方法。相关论文已投稿至顶级会议 <strong>AAAI</strong>。</p>
         </div>
+        <div class="modal" id="modal-exp-1">
+            <i class="fas fa-times modal-close"></i>
+            <h3 data-lang-key="modal_e1_title">校园个性化信息服务系统 (析数科技)</h3>
+            <p data-lang-key="modal_e1_desc1"><strong>概览:</strong> 主导开发“析数”微信小程序，利用推荐算法和大数据分析，向校内用户精准推送个性化信息。</p>
+            <p data-lang-key="modal_e1_desc2"><strong>我的职责:</strong> 全面负责项目，包括产品战略、技术指导和试点部署。在小规模测试中，系统显著提升了信息触达效率和用户满意度。</p>
+            <p data-lang-key="modal_e1_desc3"><strong>成果:</strong> 项目正在持续迭代，并逐步扩展到更多的校内应用场景。</p>
+        </div>
+        <div class="modal" id="modal-exp-2">
+            <i class="fas fa-times modal-close"></i>
+            <h3 data-lang-key="modal_e2_title">共享用工平台开发 (随程)</h3>
+            <p data-lang-key="modal_e2_desc1"><strong>背景:</strong> 为应对劳动力密集型企业面临的劳动力供需不匹配、流动成本高等问题，以及劳动者对多样化岗位的强烈需求，我领导设计并实施了“随程”共享用工平台。</p>
+            <p data-lang-key="modal_e2_desc2"><strong>我的职责:</strong> 领导整体项目战略和产品设计，完成了社会调研、需求分析和平台规划。设计了“劳动力互认模式”，并利用AI技术推动岗位的零样本分类，实现了高效的岗位匹配。同时，建立了企业评级和反馈机制，形成了监督和激励计划的闭环评估体系。</p>
+            <p data-lang-key="modal_e2_desc3"><strong>成果:</strong> 搭建了“随程”平台的产品原型和运营机制，验证了其可行性。开发了初步的智能岗位分类和推荐算法，提升了匹配效率和准确性，为企业、劳动者和区域经济创造了三方共赢的模式。</p>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -594,10 +608,10 @@
                 experience_title: "Entrepreneurial Experience",
                 exp1_title: "Campus Personalized Information Service System (Xishu Technology)",
                 exp1_date: "2023 - Present | Project Leader",
-                exp1_desc: "Led the development of the 'Xishu' WeChat mini-program, which uses recommendation algorithms and big data analysis to precisely push campus information.",
+                exp1_brief: "Led the development of the 'Xishu' WeChat mini-program for personalized and precise delivery of campus information... [Click for details]",
                 exp2_title: "Development of a Shared Employment Platform (Suicheng)",
                 exp2_date: "2023 - Present | Project Leader",
-                exp2_desc: "Designed and promoted the 'Suicheng' shared employment platform, proposing a labor mutual recognition model and AI job matching technology to address flexible employment needs.",
+                exp2_brief: "Designed and promoted the 'Suicheng' shared employment platform to address flexible employment needs... [Click for details]",
                 research_title: "Scientific Research Achievements",
                 research1: "Paper: \"GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting\", Second Author, published in IEEE, indexed by IEEE Xplore.",
                 research2: "Paper: \"DTGS: Low-Light 3D Reconstruction via Dual-Stage Illumination-Aware Thermal-Infrared Gaussian Splatting\", submitted for review to AAAI.",
@@ -633,7 +647,15 @@
                 modal_p4_title: "DTGS: Low-Light 3D Reconstruction",
                 modal_p4_desc1: "<strong>Research Direction:</strong> To tackle the formidable challenge of 3D scene reconstruction in extremely low-light conditions, this project proposes DTGS, an end-to-end framework that leverages the illumination-invariant properties of thermal-infrared imaging.",
                 modal_p4_desc2: "<strong>Methodology:</strong> DTGS deeply couples a RetinexNet-based thermal enhancement module with a 3DGS pipeline. Its core innovations include an <strong>Appearance Transformation Function (ATF)</strong> to adapt features across varying illumination, a <strong>Thermal Correction Module (TCM)</strong> to handle modality-specific distortions, and a dynamic cyclic training strategy for joint optimization.",
-                modal_p4_desc3: "<strong>Contribution & Achievements:</strong> We constructed a new challenging low-light thermal multi-view dataset. Experiments show that DTGS significantly outperforms state-of-the-art methods in both geometric accuracy and visual quality. The paper has been submitted to the top-tier conference <strong>AAAI</strong>."
+                modal_p4_desc3: "<strong>Contribution & Achievements:</strong> We constructed a new challenging low-light thermal multi-view dataset. Experiments show that DTGS significantly outperforms state-of-the-art methods in both geometric accuracy and visual quality. The paper has been submitted to the top-tier conference <strong>AAAI</strong>.",
+                modal_e1_title: "Campus Personalized Information Service System (Xishu Technology)",
+                modal_e1_desc1: "<strong>Overview:</strong> Led the development of the 'Xishu' WeChat mini-program, which uses recommendation algorithms and big data analysis to precisely push campus information to users.",
+                modal_e1_desc2: "<strong>Responsibilities:</strong> Directed product strategy, provided technical guidance, and oversaw pilot deployment. The system has significantly improved information reach efficiency and user satisfaction in small-scale tests.",
+                modal_e1_desc3: "<strong>Achievements:</strong> The project is continuously being iterated and is gradually expanding to more on-campus application scenarios.",
+                modal_e2_title: "Development of a Shared Employment Platform (Suicheng)",
+                modal_e2_desc1: "<strong>Background:</strong> In response to issues faced by labor-intensive enterprises such as labor supply-demand mismatch and high mobility costs, as well as workers' strong demand for multiple jobs, I led the design and implementation of the 'Sui Cheng' shared employment platform.",
+                modal_e2_desc2: "<strong>Responsibilities:</strong> Led the overall project strategy and product design, completing social research, demand analysis, and platform planning. Designed the 'labor mutual recognition model' and promoted zero-sample classification of jobs using AI for efficient job matching. Also established an enterprise rating and feedback mechanism to form a closed-loop evaluation system.",
+                modal_e2_desc3: "<strong>Achievements:</strong> Built the product prototype and operational mechanism of the 'Sui Cheng' platform, verifying its feasibility. Developed an initial intelligent job classification and recommendation algorithm, enhancing matching efficiency and accuracy, and creating a win-win model for enterprises, workers, and the regional economy."
             },
             zh: {
                 nav_about: "关于我",
@@ -659,10 +681,10 @@
                 experience_title: "创业经历",
                 exp1_title: "校园个性化信息服务系统 (析数科技)",
                 exp1_date: "2023 - 至今 | 项目负责人",
-                exp1_desc: "主导开发“析数”微信小程序，基于推荐算法与大数据分析，实现校园信息的个性化精准推送，提升信息触达效率。",
+                exp1_brief: "主导开发“析数”微信小程序，实现校园信息的个性化精准推送... [点击查看详情]",
                 exp2_title: "共享用工平台开发 (随程)",
                 exp2_date: "2023 - 至今 | 项目负责人",
-                exp2_desc: "设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。",
+                exp2_brief: "设计并推进“随程”共享用工平台，解决企业灵活用工需求... [点击查看详情]",
                 research_title: "科研成果",
                 research1: "论文《GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting》，第二作者，已被 IEEE Xplore 收录。",
                 research2: "论文《DTGS: Low-Light 3D Reconstruction via Dual-Stage Illumination-Aware Thermal-Infrared Gaussian Splatting》，已提交 AAAI 审稿。",
@@ -698,7 +720,15 @@
                 modal_p4_title: "DTGS: Low-Light 3D Reconstruction",
                 modal_p4_desc1: "<strong>研究方向:</strong> 为解决极低光照环境下三维场景重建的巨大挑战，本项目提出DTGS框架，一个利用热红外成像光照不变性的端到端重建方案。",
                 modal_p4_desc2: "<strong>核心方法:</strong> DTGS深度耦合了基于RetinexNet的热成像增强模块和3DGS重建管线。其核心创新包含一个用于适应光照变化的<strong>外观变换函数(ATF)</strong>、一个处理热成像伪影的<strong>热校正模块(TCM)</strong>，以及一个动态循环的联合优化训练策略。",
-                modal_p4_desc3: "<strong>贡献与成果:</strong> 我们构建了一个全新的、具有挑战性的低光照热成像多视图数据集。实验证明，DTGS在几何精度和视觉质量上均显著优于现有SOTA方法。相关论文已投稿至顶级会议 <strong>AAAI</strong>。"
+                modal_p4_desc3: "<strong>贡献与成果:</strong> 我们构建了一个全新的、具有挑战性的低光照热成像多视图数据集。实验证明，DTGS在几何精度和视觉质量上均显著优于现有SOTA方法。相关论文已投稿至顶级会议 <strong>AAAI</strong>。",
+                modal_e1_title: "校园个性化信息服务系统 (析数科技)",
+                modal_e1_desc1: "<strong>概览:</strong> 主导开发“析数”微信小程序，利用推荐算法和大数据分析，向校内用户精准推送个性化信息。",
+                modal_e1_desc2: "<strong>我的职责:</strong> 全面负责项目，包括产品战略、技术指导和试点部署。在小规模测试中，系统显著提升了信息触达效率和用户满意度。",
+                modal_e1_desc3: "<strong>成果:</strong> 项目正在持续迭代，并逐步扩展到更多的校内应用场景。",
+                modal_e2_title: "共享用工平台开发 (随程)",
+                modal_e2_desc1: "<strong>背景:</strong> 为应对劳动力密集型企业面临的劳动力供需不匹配、流动成本高等问题，以及劳动者对多样化岗位的强烈需求，我领导设计并实施了“随程”共享用工平台。",
+                modal_e2_desc2: "<strong>我的职责:</strong> 领导整体项目战略和产品设计，完成了社会调研、需求分析和平台规划。设计了“劳动力互认模式”，并利用AI技术推动岗位的零样本分类，实现了高效的岗位匹配。同时，建立了企业评级和反馈机制，形成了监督和激励计划的闭环评估体系。",
+                modal_e2_desc3: "<strong>成果:</strong> 搭建了“随程”平台的产品原型和运营机制，验证了其可行性。开发了初步的智能岗位分类和推荐算法，提升了匹配效率和准确性，为企业、劳动者和区域经济创造了三方共赢的模式。"
             }
         };
 
