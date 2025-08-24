@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马庆森的个人主页</title>
+    <!-- 引入AOS动画库的CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- 全局样式 --- */
+        :root {
+            --primary-color: #00bfff; /* 主题色：深天蓝 */
+            --background-color: #121212; /* 背景色：深邃黑 */
+            --text-color: #e0e0e0; /* 主要文字颜色 */
+            --card-bg-color: #1e1e1e; /* 卡片背景色 */
+            --border-color: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- 导航栏 --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 5%;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- 粒子背景 --- */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* --- 通用区块样式 --- */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 10%;
+            box-sizing: border-box;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* --- 主页区块 --- */
+        #home {
+            text-align: center;
+        }
+
+        #home h1 {
+            font-size: 4em;
+            margin: 0;
+            color: #fff;
+        }
+
+        #home p {
+            font-size: 1.5em;
+            margin-top: 10px;
+            color: var(--primary-color);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 2em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* --- 关于我区块 --- */
+        #about p {
+            max-width: 800px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        #about strong {
+            color: var(--primary-color);
+        }
+
+        /* --- 项目/经历/技能 卡片布局 --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+        
+        .card.clickable {
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 191, 255, 0.2);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.4em;
+        }
+
+        .card p {
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .card .date {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        /* --- 技能区块 --- */
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: var(--card-bg-color);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        .skill-item i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+        .skill-item span {
+            font-size: 1.1em;
+        }
+
+
+        /* --- 联系方式区块 --- */
+        .contact-details {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        
+        .contact-item span {
+             word-break: break-all;
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        /* --- 弹窗 Modal 样式 --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-bg-color);
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+        
+        .modal-overlay.active .modal {
+             transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+        
+        .modal h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .modal p {
+            line-height: 1.7;
+        }
+
+        /* --- 响应式设计 --- */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* 在移动端隐藏导航链接 */
+            }
+            #home h1 {
+                font-size: 2.5em;
+            }
+            #home p {
+                font-size: 1.2em;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            .section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 粒子背景容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#home" class="logo">Ma Qingsen</a>
+        <ul>
+            <li><a href="#about">关于我</a></li>
+            <li><a href="#projects">项目经历</a></li>
+            <li><a href="#experience">创业经历</a></li>
+            <li><a href="#skills">专业技能</a></li>
+            <li><a href="#contact">联系我</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主页区块 -->
+    <section id="home" class="section">
+        <div data-aos="zoom-in">
+            <h1>马庆森</h1>
+            <p>北京邮电大学 | 人工智能专业</p>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- 关于我区块 -->
+    <section id="about" class="section">
+        <h2 class="section-title" data-aos="fade-up">关于我</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+            我叫马庆森，是 <strong>北京邮电大学</strong> 人工智能专业的一名本科生。我对AI领域充满热情，尤其关注大语言模型、计算机视觉和数据科学。我的专业排名为 <strong>15/176</strong> (GPA: 3.72)，具备扎实的理论基础和丰富的项目实践经验。我乐于探索前沿技术，并致力于用技术解决实际问题，期待在人工智能领域做出自己的贡献。
+        </p>
+    </section>
+
+    <!-- 项目经历区块 -->
+    <section id="projects" class="section">
+        <h2 class="section-title" data-aos="fade-up">项目经历</h2>
+        <div class="grid-container">
+            <!-- 卡片1 -->
+            <div class="card clickable" data-aos="fade-up" data-modal-target="modal-project-1">
+                <h3>大模型防御攻击任务</h3>
+                <p class="date">2023 - 至今</p>
+                <p>针对大模型易受提示注入、越狱等攻击的问题，设计并迭代防御方案... [点击查看详情]</p>
+            </div>
+            <!-- 卡片2 -->
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="100" data-modal-target="modal-project-2">
+                <h3>宠物产品市场建模与业务优化</h3>
+                <p class="date">2024 - 2025</p>
+                <p>基于上市公司pidan的真实商业数据，进行市场建模与业务优化... [点击查看详情]</p>
+            </div>
+            <!-- 卡片3 -->
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="200" data-modal-target="modal-project-3">
+                <h3>Gaussian Enhancer for 3D Splatting</h3>
+                <p class="date">2024 - 2025.03</p>
+                <p>采用 diffusion + Gaussian splatting 方法实现高质量 3D 数字资产快速重建... [点击查看详情]</p>
+            </div>
+            <!-- 卡片4 -->
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="300" data-modal-target="modal-project-4">
+                <h3>DTGS: Low-Light 3D Reconstruction</h3>
+                <p class="date">2023 - 至今</p>
+                <p>探索在低光照条件下利用热红外成像进行3D场景重建，提升重建精度... [点击查看详情]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 创业经历区块 -->
+    <section id="experience" class="section">
+        <h2 class="section-title" data-aos="fade-up">创业经历</h2>
+        <div class="grid-container">
+            <div class="card" data-aos="fade-up">
+                <h3>校园个性化信息服务系统 (析数科技)</h3>
+                <p class="date">2023 - 至今 | 项目负责人</p>
+                <p>主导开发“析数”微信小程序，基于推荐算法与大数据分析，实现校园信息的个性化精准推送，提升信息触达效率。</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3>共享用工平台开发 (随程)</h3>
+                <p class="date">2023 - 至今 | 项目负责人</p>
+                <p>设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业技能区块 -->
+    <section id="skills" class="section">
+        <h2 class="section-title" data-aos="fade-up">专业技能</h2>
+        <div class="grid-container">
+            <div class="skill-item" data-aos="fade-right">
+                <i class="fas fa-brain"></i>
+                <span>机器学习 & 深度学习</span>
+            </div>
+            <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+                <i class="fas fa-language"></i>
+                <span>自然语言处理 (NLP)</span>
+            </div>
+            <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+                <i class="fas fa-eye"></i>
+                <span>计算机视觉 (CV)</span>
+            </div>
+            <div class="skill-item" data-aos="fade-left" data-aos-delay="300">
+                <i class="fas fa-code"></i>
+                <span>Python & C++</span>
+            </div>
+            <div class="skill-item" data-aos="fade-left" data-aos-delay="400">
+                <i class="fas fa-database"></i>
+                <span>数据分析 & 建模</span>
+            </div>
+            <div class="skill-item" data-aos="fade-left" data-aos-delay="500">
+                <i class="fab fa-git-alt"></i>
+                <span>Git & GitHub</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我区块 -->
+    <section id="contact" class="section">
+        <h2 class="section-title" data-aos="fade-up">联系我</h2>
+        <div class="contact-details" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>
+                    <a href="mailto:wofenglongchu@gmail.com">wofenglongchu@gmail.com</a> / 
+                    <a href="mailto:2360337508@qq.com">2360337508@qq.com</a>
+                </span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <span>
+                    <a href="https://github.com/maqinsgen" target="_blank">github.com/maqinsgen</a>
+                </span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>
+                    <a href="tel:+8618733657253">+86 18733657253</a> / 
+                    <a href="tel:+85257943805">+852 57943805</a>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 弹窗 Modals -->
+    <div class="modal-overlay" id="modal-overlay">
+        <!-- 弹窗1 -->
+        <div class="modal" id="modal-project-1">
+            <i class="fas fa-times modal-close"></i>
+            <h3>大模型防御攻击任务</h3>
+            <p><strong>背景:</strong> 针对大模型易受提示注入、越狱攻击等安全威胁的问题, 研究防御方法, 提升模型鲁棒性。</p>
+            <p><strong>我的工作:</strong> 结合 TrustLLM与Aligner 技术, 设计并迭代3个版本方案, 标注500条数据集并开展数据增强, 整体防御效果提升约14%。</p>
+            <p><strong>成果:</strong> 全国大学生服务外包创新创业大赛一等奖；相关专利申请已获国家知识产权局受理。</p>
+        </div>
+        <!-- 弹窗2 -->
+        <div class="modal" id="modal-project-2">
+            <i class="fas fa-times modal-close"></i>
+            <h3>宠物产品市场建模与业务优化</h3>
+            <p><strong>背景:</strong> 基于上市公司 pidan 的真实商业数据, 探索用户行为模式, 优化宠物产品线投资与推荐策略。</p>
+            <p><strong>我的工作:</strong> 开展大规模数据收集与特征工程, 训练多模型用于客户细分、需求预测、推荐系统, 形成技术报告与商业洞察。</p>
+            <p><strong>成果:</strong> 全国大学生“创新、创意与创业”挑战赛商业数据赛道(北京赛区)一等奖。</p>
+        </div>
+        <!-- 弹窗3 -->
+        <div class="modal" id="modal-project-3">
+            <i class="fas fa-times modal-close"></i>
+            <h3>Gaussian Enhancer for 3D Splatting</h3>
+            <p><strong>研究方向:</strong> 采用 diffusion + Gaussian splatting 方法实现高质量 3D 数字资产快速重建, 提升渲染精度与几何细节。</p>
+            <p><strong>我的工作:</strong> 研究团队对原始图像序列进行模拟退化, 结合目标帧的深度信息与相邻帧原始图像, 通过空间信息融合(SIF)模块优化目标帧的重建质量。</p>
+            <p><strong>核心成果:</strong> 论文《GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting》已被 IEEE Xplore 收录, 并申请了相关专利。</p>
+        </div>
+        <!-- 弹窗4 -->
+        <div class="modal" id="modal-project-4">
+            <i class="fas fa-times modal-close"></i>
+            <h3>DTGS: Low-Light 3D Reconstruction</h3>
+            <p><strong>研究方向:</strong> 探索在低光照条件下利用热红外成像进行3D场景重建, 采用Dual-Stage Thermal Gaussian Splatting (DTGS)框架进行联合优化。</p>
+            <p><strong>我的工作:</strong> 独立自主进行整个研究和项目推进, 包括设计并构建了一个具有挑战性的低光照热成像多视图数据集, 并提出创新性的外观变换函数(ATF)和热校正模块(TCM)。</p>
+            <p><strong>核心成果:</strong> 提交论文到AAAI进行审稿。项目初步结果在几何精度和视觉质量方面明显优于现有的热成像3DGS方法。</p>
+        </div>
+    </div>
+
+
+    <!-- 引入JS库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 初始化 AOS (Animate On Scroll) 动画库
+        AOS.init({
+            duration: 1000, // 动画持续时间
+            once: true, // 动画只播放一次
+        });
+
+        // 初始化 particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 }},
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+        
+        // --- 弹窗 Modal 逻辑 ---
+        const clickableCards = document.querySelectorAll('.clickable');
+        const modalOverlay = document.getElementById('modal-overlay');
+
+        clickableCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal-target');
+                const modal = document.getElementById(modalId);
+                
+                // 隐藏所有弹窗
+                document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+                
+                // 显示目标弹窗
+                modal.style.display = 'block';
+                modalOverlay.classList.add('active');
+            });
+        });
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.querySelectorAll('.modal-close').forEach(button => {
+            button.addEventListener('click', closeModal);
+        });
+
+    </script>
+</body>
+</html>
