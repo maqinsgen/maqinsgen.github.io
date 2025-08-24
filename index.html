@@ -44,6 +44,7 @@
             align-items: center;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
         }
 
         nav .logo {
@@ -51,6 +52,11 @@
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         nav ul {
@@ -74,6 +80,25 @@
         nav ul li a:hover {
             color: var(--primary-color);
         }
+        
+        /* 语言切换按钮 */
+        .lang-switcher {
+            margin-left: 40px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .lang-switcher span {
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+        .lang-switcher span.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .lang-switcher span:hover {
+            color: #fff;
+        }
+
 
         /* --- 粒子背景 --- */
         #particles-js {
@@ -92,7 +117,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 80px 10%;
+            padding: 100px 10%;
             box-sizing: border-box;
             position: relative;
             text-align: center;
@@ -146,24 +171,39 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateX(-50%) translateY(0);
-            }
-            40% {
-                transform: translateX(-50%) translateY(-20px);
-            }
-            60% {
-                transform: translateX(-50%) translateY(-10px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
         }
 
         /* --- 关于我区块 --- */
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            text-align: left;
+            max-width: 1000px;
+        }
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        .about-image {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+        }
         #about p {
-            max-width: 800px;
             font-size: 1.1em;
             line-height: 1.8;
         }
-        
         #about strong {
             color: var(--primary-color);
         }
@@ -183,6 +223,8 @@
             border: 1px solid var(--border-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: left;
+            display: flex;
+            flex-direction: column;
         }
         
         .card.clickable {
@@ -192,6 +234,14 @@
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 191, 255, 0.2);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .card h3 {
@@ -203,6 +253,7 @@
         .card p {
             line-height: 1.6;
             margin-bottom: 0;
+            flex-grow: 1;
         }
         
         .card .date {
@@ -232,13 +283,11 @@
             font-size: 1.1em;
         }
 
-
         /* --- 联系方式区块 --- */
         .contact-details {
             margin-top: 30px;
             font-size: 1.2em;
         }
-
         .contact-item {
             display: flex;
             align-items: center;
@@ -246,23 +295,17 @@
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
-
         .contact-item i {
             color: var(--primary-color);
             font-size: 1.5em;
             margin-right: 15px;
         }
-        
-        .contact-item span {
-             word-break: break-all;
-        }
-
+        .contact-item span { word-break: break-all; }
         .contact-item a {
             color: var(--text-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-
         .contact-item a:hover {
             color: var(--primary-color);
             text-decoration: underline;
@@ -270,326 +313,342 @@
         
         /* --- 弹窗 Modal 样式 --- */
         .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; opacity: 0; visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal {
-            background: var(--card-bg-color);
-            padding: 40px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 600px;
-            position: relative;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
+            background: var(--card-bg-color); padding: 40px; border-radius: 15px;
+            width: 90%; max-width: 700px; max-height: 80vh; overflow-y: auto;
+            position: relative; transform: scale(0.9); transition: transform 0.3s ease;
             text-align: left;
         }
-        
-        .modal-overlay.active .modal {
-             transform: scale(1);
-        }
-
+        .modal-overlay.active .modal { transform: scale(1); }
         .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5em;
-            color: #aaa;
-            cursor: pointer;
-            transition: color 0.3s ease;
+            position: absolute; top: 15px; right: 15px; font-size: 1.5em;
+            color: #aaa; cursor: pointer; transition: color 0.3s ease;
         }
-        
-        .modal-close:hover {
-            color: var(--primary-color);
-        }
-        
-        .modal h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-        
-        .modal p {
-            line-height: 1.7;
-        }
+        .modal-close:hover { color: var(--primary-color); }
+        .modal h3 { margin-top: 0; color: var(--primary-color); }
+        .modal p { line-height: 1.7; }
+        .modal strong { color: var(--primary-color); }
 
         /* --- 响应式设计 --- */
         @media (max-width: 768px) {
-            nav ul {
-                display: none; /* 在移动端隐藏导航链接 */
-            }
-            #home h1 {
-                font-size: 2.5em;
-            }
-            #home p {
-                font-size: 1.2em;
-            }
-            .section-title {
-                font-size: 2em;
-            }
-            .section {
-                padding: 60px 5%;
-            }
+            nav ul { display: none; }
+            #home h1 { font-size: 2.5em; }
+            #home p { font-size: 1.2em; }
+            .section-title { font-size: 2em; }
+            .section { padding: 80px 5%; }
+            .about-container { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 粒子背景容器 -->
     <div id="particles-js"></div>
 
-    <!-- 导航栏 -->
     <nav>
         <a href="#home" class="logo">Ma Qingsen</a>
-        <ul>
-            <li><a href="#about">关于我</a></li>
-            <li><a href="#projects">项目经历</a></li>
-            <li><a href="#experience">创业经历</a></li>
-            <li><a href="#skills">专业技能</a></li>
-            <li><a href="#contact">联系我</a></li>
-        </ul>
+        <div class="nav-links">
+            <ul>
+                <li><a href="#about" data-lang-key="nav_about">关于我</a></li>
+                <li><a href="#projects" data-lang-key="nav_projects">项目经历</a></li>
+                <li><a href="#experience" data-lang-key="nav_experience">创业经历</a></li>
+                <li><a href="#skills" data-lang-key="nav_skills">专业技能</a></li>
+                <li><a href="#contact" data-lang-key="nav_contact">联系我</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <span id="lang-en">EN</span> / <span id="lang-zh" class="active">ZH</span>
+            </div>
+        </div>
     </nav>
 
-    <!-- 主页区块 -->
     <section id="home" class="section">
         <div data-aos="zoom-in">
-            <h1>马庆森</h1>
-            <p>北京邮电大学 | 人工智能专业</p>
+            <h1 data-lang-key="home_name">马庆森</h1>
+            <p data-lang-key="home_title">北京邮电大学 | 人工智能专业</p>
         </div>
-        <a href="#about" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+        <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </section>
 
-    <!-- 关于我区块 -->
     <section id="about" class="section">
-        <h2 class="section-title" data-aos="fade-up">关于我</h2>
-        <p data-aos="fade-up" data-aos-delay="100">
-            我叫马庆森，是 <strong>北京邮电大学</strong> 人工智能专业的一名本科生。我对AI领域充满热情，尤其关注大语言模型、计算机视觉和数据科学。我的专业排名为 <strong>15/176</strong> (GPA: 3.72)，具备扎实的理论基础和丰富的项目实践经验。我乐于探索前沿技术，并致力于用技术解决实际问题，期待在人工智能领域做出自己的贡献。
-        </p>
-    </section>
-
-    <!-- 项目经历区块 -->
-    <section id="projects" class="section">
-        <h2 class="section-title" data-aos="fade-up">项目经历</h2>
-        <div class="grid-container">
-            <!-- 卡片1 -->
-            <div class="card clickable" data-aos="fade-up" data-modal-target="modal-project-1">
-                <h3>大模型防御攻击任务</h3>
-                <p class="date">2023 - 至今</p>
-                <p>针对大模型易受提示注入、越狱等攻击的问题，设计并迭代防御方案... [点击查看详情]</p>
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="about_title">关于我</h2>
+        <div class="about-container">
+            <div class="about-image" data-aos="fade-right">
+                <img src="https://placehold.co/400x500/1e1e1e/00bfff?text=AI" alt="AI illustration">
             </div>
-            <!-- 卡片2 -->
-            <div class="card clickable" data-aos="fade-up" data-aos-delay="100" data-modal-target="modal-project-2">
-                <h3>宠物产品市场建模与业务优化</h3>
-                <p class="date">2024 - 2025</p>
-                <p>基于上市公司pidan的真实商业数据，进行市场建模与业务优化... [点击查看详情]</p>
-            </div>
-            <!-- 卡片3 -->
-            <div class="card clickable" data-aos="fade-up" data-aos-delay="200" data-modal-target="modal-project-3">
-                <h3>Gaussian Enhancer for 3D Splatting</h3>
-                <p class="date">2024 - 2025.03</p>
-                <p>采用 diffusion + Gaussian splatting 方法实现高质量 3D 数字资产快速重建... [点击查看详情]</p>
-            </div>
-            <!-- 卡片4 -->
-            <div class="card clickable" data-aos="fade-up" data-aos-delay="300" data-modal-target="modal-project-4">
-                <h3>DTGS: Low-Light 3D Reconstruction</h3>
-                <p class="date">2023 - 至今</p>
-                <p>探索在低光照条件下利用热红外成像进行3D场景重建，提升重建精度... [点击查看详情]</p>
+            <div class="about-text" data-aos="fade-left">
+                <p data-lang-key="about_desc">
+                    我叫马庆森，是 <strong>北京邮电大学</strong> 人工智能专业的一名本科生。我对AI领域充满热情，尤其关注大语言模型、计算机视觉和数据科学。我的专业排名为 <strong>15/176</strong> (GPA: 3.72)，具备扎实的理论基础和丰富的项目实践经验。我乐于探索前沿技术，并致力于用技术解决实际问题，期待在人工智能领域做出自己的贡献。
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- 创业经历区块 -->
+    <section id="projects" class="section">
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="projects_title">项目经历</h2>
+        <div class="grid-container">
+            <div class="card clickable" data-aos="fade-up" data-modal-target="modal-project-1">
+                <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=LLM+Security" alt="LLM Security" class="card-image">
+                <h3 data-lang-key="project1_title">大模型防御攻击任务</h3>
+                <p class="date">2023 - Present</p>
+                <p data-lang-key="project1_brief">针对大模型易受提示注入、越狱等攻击的问题，设计并迭代防御方案... [点击查看详情]</p>
+            </div>
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="100" data-modal-target="modal-project-2">
+                 <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=Data+Modeling" alt="Data Modeling" class="card-image">
+                <h3 data-lang-key="project2_title">宠物产品市场建模与业务优化</h3>
+                <p class="date">2024 - 2025</p>
+                <p data-lang-key="project2_brief">基于上市公司pidan的真实商业数据，进行市场建模与业务优化... [点击查看详情]</p>
+            </div>
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="200" data-modal-target="modal-project-3">
+                 <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=3DGS" alt="3D Gaussian Splatting" class="card-image">
+                <h3 data-lang-key="project3_title">Gaussian Enhancer for 3D Splatting</h3>
+                <p class="date">2024 - 2025.03</p>
+                <p data-lang-key="project3_brief">采用 diffusion + Gaussian splatting 方法实现高质量 3D 数字资产快速重建... [点击查看详情]</p>
+            </div>
+            <div class="card clickable" data-aos="fade-up" data-aos-delay="300" data-modal-target="modal-project-4">
+                 <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=Thermal+3D" alt="Thermal 3D Reconstruction" class="card-image">
+                <h3 data-lang-key="project4_title">DTGS: Low-Light 3D Reconstruction</h3>
+                <p class="date">2023 - Present</p>
+                <p data-lang-key="project4_brief">探索在低光照条件下利用热红外成像进行3D场景重建，提升重建精度... [点击查看详情]</p>
+            </div>
+        </div>
+    </section>
+
     <section id="experience" class="section">
-        <h2 class="section-title" data-aos="fade-up">创业经历</h2>
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="experience_title">创业经历</h2>
         <div class="grid-container">
             <div class="card" data-aos="fade-up">
-                <h3>校园个性化信息服务系统 (析数科技)</h3>
-                <p class="date">2023 - 至今 | 项目负责人</p>
-                <p>主导开发“析数”微信小程序，基于推荐算法与大数据分析，实现校园信息的个性化精准推送，提升信息触达效率。</p>
+                <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=Campus+Service" alt="Campus Service" class="card-image">
+                <h3 data-lang-key="exp1_title">校园个性化信息服务系统 (析数科技)</h3>
+                <p class="date" data-lang-key="exp1_date">2023 - 至今 | 项目负责人</p>
+                <p data-lang-key="exp1_desc">主导开发“析数”微信小程序，基于推荐算法与大数据分析，实现校园信息的个性化精准推送，提升信息触达效率。</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <h3>共享用工平台开发 (随程)</h3>
-                <p class="date">2023 - 至今 | 项目负责人</p>
-                <p>设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。</p>
+                <img src="https://placehold.co/400x250/1e1e1e/00bfff?text=Sharing+Economy" alt="Sharing Economy" class="card-image">
+                <h3 data-lang-key="exp2_title">共享用工平台开发 (随程)</h3>
+                <p class="date" data-lang-key="exp2_date">2023 - 至今 | 项目负责人</p>
+                <p data-lang-key="exp2_desc">设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。</p>
             </div>
         </div>
     </section>
 
-    <!-- 专业技能区块 -->
     <section id="skills" class="section">
-        <h2 class="section-title" data-aos="fade-up">专业技能</h2>
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="skills_title">专业技能</h2>
         <div class="grid-container">
-            <div class="skill-item" data-aos="fade-right">
-                <i class="fas fa-brain"></i>
-                <span>机器学习 & 深度学习</span>
-            </div>
-            <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
-                <i class="fas fa-language"></i>
-                <span>自然语言处理 (NLP)</span>
-            </div>
-            <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
-                <i class="fas fa-eye"></i>
-                <span>计算机视觉 (CV)</span>
-            </div>
-            <div class="skill-item" data-aos="fade-left" data-aos-delay="300">
-                <i class="fas fa-code"></i>
-                <span>Python & C++</span>
-            </div>
-            <div class="skill-item" data-aos="fade-left" data-aos-delay="400">
-                <i class="fas fa-database"></i>
-                <span>数据分析 & 建模</span>
-            </div>
-            <div class="skill-item" data-aos="fade-left" data-aos-delay="500">
-                <i class="fab fa-git-alt"></i>
-                <span>Git & GitHub</span>
-            </div>
+            <div class="skill-item" data-aos="fade-right"><i class="fas fa-brain"></i><span data-lang-key="skill1">机器学习 & 深度学习</span></div>
+            <div class="skill-item" data-aos="fade-right" data-aos-delay="100"><i class="fas fa-language"></i><span data-lang-key="skill2">自然语言处理 (NLP)</span></div>
+            <div class="skill-item" data-aos="fade-right" data-aos-delay="200"><i class="fas fa-eye"></i><span data-lang-key="skill3">计算机视觉 (CV)</span></div>
+            <div class="skill-item" data-aos="fade-left" data-aos-delay="300"><i class="fas fa-code"></i><span data-lang-key="skill4">Python & C++</span></div>
+            <div class="skill-item" data-aos="fade-left" data-aos-delay="400"><i class="fas fa-database"></i><span data-lang-key="skill5">数据分析 & 建模</span></div>
+            <div class="skill-item" data-aos="fade-left" data-aos-delay="500"><i class="fab fa-git-alt"></i><span data-lang-key="skill6">Git & GitHub</span></div>
         </div>
     </section>
 
-    <!-- 联系我区块 -->
     <section id="contact" class="section">
-        <h2 class="section-title" data-aos="fade-up">联系我</h2>
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="contact_title">联系我</h2>
         <div class="contact-details" data-aos="fade-up" data-aos-delay="100">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>
-                    <a href="mailto:wofenglongchu@gmail.com">wofenglongchu@gmail.com</a> / 
-                    <a href="mailto:2360337508@qq.com">2360337508@qq.com</a>
-                </span>
-            </div>
-            <div class="contact-item">
-                <i class="fab fa-github"></i>
-                <span>
-                    <a href="https://github.com/maqinsgen" target="_blank">github.com/maqinsgen</a>
-                </span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <span>
-                    <a href="tel:+8618733657253">+86 18733657253</a> / 
-                    <a href="tel:+85257943805">+852 57943805</a>
-                </span>
-            </div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><span><a href="mailto:wofenglongchu@gmail.com">wofenglongchu@gmail.com</a> / <a href="mailto:2360337508@qq.com">2360337508@qq.com</a></span></div>
+            <div class="contact-item"><i class="fab fa-github"></i><span><a href="https://github.com/maqinsgen" target="_blank">github.com/maqinsgen</a></span></div>
+            <div class="contact-item"><i class="fas fa-phone"></i><span><a href="tel:+8618733657253">+86 18733657253</a> / <a href="tel:+85257943805">+852 57943805</a></span></div>
         </div>
     </section>
 
-    <!-- 弹窗 Modals -->
     <div class="modal-overlay" id="modal-overlay">
-        <!-- 弹窗1 -->
         <div class="modal" id="modal-project-1">
             <i class="fas fa-times modal-close"></i>
-            <h3>大模型防御攻击任务</h3>
-            <p><strong>背景:</strong> 针对大模型易受提示注入、越狱攻击等安全威胁的问题, 研究防御方法, 提升模型鲁棒性。</p>
-            <p><strong>我的工作:</strong> 结合 TrustLLM与Aligner 技术, 设计并迭代3个版本方案, 标注500条数据集并开展数据增强, 整体防御效果提升约14%。</p>
-            <p><strong>成果:</strong> 全国大学生服务外包创新创业大赛一等奖；相关专利申请已获国家知识产权局受理。</p>
+            <h3 data-lang-key="modal_p1_title">大模型防御攻击任务</h3>
+            <p data-lang-key="modal_p1_desc1"><strong>背景:</strong> 针对大模型易受提示注入、越狱攻击等安全威胁的问题, 研究防御方法, 提升模型鲁棒性。</p>
+            <p data-lang-key="modal_p1_desc2"><strong>我的工作:</strong> 结合 TrustLLM与Aligner 技术, 设计并迭代3个版本方案, 标注500条数据集并开展数据增强, 整体防御效果提升约14%。</p>
+            <p data-lang-key="modal_p1_desc3"><strong>成果:</strong> 全国大学生服务外包创新创业大赛一等奖；相关专利申请已获国家知识产权局受理。</p>
         </div>
-        <!-- 弹窗2 -->
         <div class="modal" id="modal-project-2">
             <i class="fas fa-times modal-close"></i>
-            <h3>宠物产品市场建模与业务优化</h3>
-            <p><strong>背景:</strong> 基于上市公司 pidan 的真实商业数据, 探索用户行为模式, 优化宠物产品线投资与推荐策略。</p>
-            <p><strong>我的工作:</strong> 开展大规模数据收集与特征工程, 训练多模型用于客户细分、需求预测、推荐系统, 形成技术报告与商业洞察。</p>
-            <p><strong>成果:</strong> 全国大学生“创新、创意与创业”挑战赛商业数据赛道(北京赛区)一等奖。</p>
+            <h3 data-lang-key="modal_p2_title">宠物产品市场建模与业务优化</h3>
+            <p data-lang-key="modal_p2_desc1"><strong>背景:</strong> 基于上市公司 pidan 的真实商业数据, 探索用户行为模式, 优化宠物产品线投资与推荐策略。</p>
+            <p data-lang-key="modal_p2_desc2"><strong>我的工作:</strong> 开展大规模数据收集与特征工程, 训练多模型用于客户细分、需求预测、推荐系统, 形成技术报告与商业洞察。</p>
+            <p data-lang-key="modal_p2_desc3"><strong>成果:</strong> 全国大学生“创新、创意与创业”挑战赛商业数据赛道(北京赛区)一等奖。</p>
         </div>
-        <!-- 弹窗3 -->
         <div class="modal" id="modal-project-3">
             <i class="fas fa-times modal-close"></i>
-            <h3>Gaussian Enhancer for 3D Splatting</h3>
-            <p><strong>研究方向:</strong> 采用 diffusion + Gaussian splatting 方法实现高质量 3D 数字资产快速重建, 提升渲染精度与几何细节。</p>
-            <p><strong>我的工作:</strong> 研究团队对原始图像序列进行模拟退化, 结合目标帧的深度信息与相邻帧原始图像, 通过空间信息融合(SIF)模块优化目标帧的重建质量。</p>
-            <p><strong>核心成果:</strong> 论文《GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting》已被 IEEE Xplore 收录, 并申请了相关专利。</p>
+            <h3 data-lang-key="modal_p3_title">Gaussian Enhancer for 3D Splatting</h3>
+            <p data-lang-key="modal_p3_desc1"><strong>研究方向:</strong> 本项目提出 'GaussianEnhancer'，一个通用的、与网络无关的后处理器，旨在解决高斯溅射（GS）模型渲染结果中普遍存在的模糊、噪点等瑕疵问题。</p>
+            <p data-lang-key="modal_p3_desc2"><strong>核心方法:</strong> 我们构建了一个GS风格的退化模拟器来复现渲染瑕疵。核心是一个空间信息融合（SIF）模块，它巧妙地结合了目标帧的深度信息与相邻原始帧的纹理细节，对退化的图像进行修复，从而显著提升渲染质量与几何细节。</p>
+            <p data-lang-key="modal_p3_desc3"><strong>贡献与成果:</strong> 该方法能有效提升多种主流GS模型在多个标准数据集上的渲染效果。相关论文已被国际顶级会议 <strong>IEEE ICASSP 2025</strong> 接收，并已申请相关专利。</p>
         </div>
-        <!-- 弹窗4 -->
         <div class="modal" id="modal-project-4">
             <i class="fas fa-times modal-close"></i>
-            <h3>DTGS: Low-Light 3D Reconstruction</h3>
-            <p><strong>研究方向:</strong> 探索在低光照条件下利用热红外成像进行3D场景重建, 采用Dual-Stage Thermal Gaussian Splatting (DTGS)框架进行联合优化。</p>
-            <p><strong>我的工作:</strong> 独立自主进行整个研究和项目推进, 包括设计并构建了一个具有挑战性的低光照热成像多视图数据集, 并提出创新性的外观变换函数(ATF)和热校正模块(TCM)。</p>
-            <p><strong>核心成果:</strong> 提交论文到AAAI进行审稿。项目初步结果在几何精度和视觉质量方面明显优于现有的热成像3DGS方法。</p>
+            <h3 data-lang-key="modal_p4_title">DTGS: Low-Light 3D Reconstruction</h3>
+            <p data-lang-key="modal_p4_desc1"><strong>研究方向:</strong> 为解决极低光照环境下三维场景重建的巨大挑战，本项目提出DTGS框架，一个利用热红外成像光照不变性的端到端重建方案。</p>
+            <p data-lang-key="modal_p4_desc2"><strong>核心方法:</strong> DTGS深度耦合了基于RetinexNet的热成像增强模块和3DGS重建管线。其核心创新包含一个用于适应光照变化的<strong>外观变换函数(ATF)</strong>、一个处理热成像伪影的<strong>热校正模块(TCM)</strong>，以及一个动态循环的联合优化训练策略。</p>
+            <p data-lang-key="modal_p4_desc3"><strong>贡献与成果:</strong> 我们构建了一个全新的、具有挑战性的低光照热成像多视图数据集。实验证明，DTGS在几何精度和视觉质量上均显著优于现有SOTA方法。相关论文已投稿至顶级会议 <strong>AAAI</strong>。</p>
         </div>
     </div>
 
-
-    <!-- 引入JS库 -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // 初始化 AOS (Animate On Scroll) 动画库
-        AOS.init({
-            duration: 1000, // 动画持续时间
-            once: true, // 动画只播放一次
-        });
+        AOS.init({ duration: 1000, once: true });
 
         // 初始化 particles.js
         particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 80, "density": { "enable": true, "value_area": 800 }},
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.5, "random": false },
-                "size": { "value": 3, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-                "modes": { "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 } }
-            },
+            "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 }}, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }},
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 } }},
             "retina_detect": true
         });
         
         // --- 弹窗 Modal 逻辑 ---
         const clickableCards = document.querySelectorAll('.clickable');
         const modalOverlay = document.getElementById('modal-overlay');
-
         clickableCards.forEach(card => {
             card.addEventListener('click', () => {
                 const modalId = card.getAttribute('data-modal-target');
                 const modal = document.getElementById(modalId);
-                
-                // 隐藏所有弹窗
                 document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-                
-                // 显示目标弹窗
                 modal.style.display = 'block';
                 modalOverlay.classList.add('active');
             });
         });
+        function closeModal() { modalOverlay.classList.remove('active'); }
+        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+        document.querySelectorAll('.modal-close').forEach(b => b.addEventListener('click', closeModal));
 
-        function closeModal() {
-            modalOverlay.classList.remove('active');
+        // --- 中英文切换逻辑 ---
+        const translations = {
+            en: {
+                nav_about: "About",
+                nav_projects: "Projects",
+                nav_experience: "Experience",
+                nav_skills: "Skills",
+                nav_contact: "Contact",
+                home_name: "Ma Qingsen",
+                home_title: "BUPT Student | AI Major",
+                about_title: "About Me",
+                about_desc: "My name is Ma Qingsen, an undergraduate student majoring in Artificial Intelligence at <strong>Beijing University of Posts and Telecommunications (BUPT)</strong>. I am passionate about the AI field, with a special focus on Large Language Models, Computer Vision, and Data Science. My academic ranking is <strong>15/176</strong> (GPA: 3.72), which provides me with a solid theoretical foundation and extensive project experience. I enjoy exploring cutting-edge technologies and am dedicated to solving real-world problems with technology, looking forward to making my own contributions to the field of AI.",
+                projects_title: "Projects",
+                project1_title: "LLM Defense Against Attacks",
+                project1_brief: "Designed and iterated on defense solutions against prompt injection and jailbreak attacks on LLMs... [Click for details]",
+                project2_title: "Pet Product Market Modeling",
+                project2_brief: "Conducted market modeling and business optimization based on real business data from the listed company pidan... [Click for details]",
+                project3_title: "Gaussian Enhancer for 3D Splatting",
+                project3_brief: "A general post-processor to improve rendering quality for GS models using a degradation-driven view blending method... [Click for details]",
+                project4_title: "DTGS: Low-Light 3D Reconstruction",
+                project4_brief: "Explored 3D scene reconstruction using thermal-infrared imaging in low-light conditions to improve accuracy... [Click for details]",
+                experience_title: "Entrepreneurial Experience",
+                exp1_title: "Campus Personalized Info Service",
+                exp1_date: "2023 - Present | Project Lead",
+                exp1_desc: "Led the development of the 'Xishu' WeChat mini-program, achieving personalized and precise delivery of campus information based on recommendation algorithms and big data analysis.",
+                exp2_title: "Shared Labor Platform Development",
+                exp2_date: "2023 - Present | Project Lead",
+                exp2_desc: "Designed and promoted the 'Suicheng' shared labor platform, proposing a labor mutual recognition model and AI-powered job matching technology to address flexible employment needs.",
+                skills_title: "Skills",
+                skill1: "Machine & Deep Learning",
+                skill2: "Natural Language Processing",
+                skill3: "Computer Vision (CV)",
+                skill4: "Python & C++",
+                skill5: "Data Analysis & Modeling",
+                skill6: "Git & GitHub",
+                contact_title: "Contact Me",
+                modal_p1_title: "LLM Defense Against Attacks",
+                modal_p1_desc1: "<strong>Background:</strong> To address the security threats that large models are susceptible to, such as prompt injection and jailbreak attacks, and to study defense methods to improve model robustness.",
+                modal_p1_desc2: "<strong>My Work:</strong> Combined TrustLLM and Aligner technologies to design and iterate on three versions of the solution. Labeled a dataset of 500 entries and performed data augmentation, improving the overall defense effectiveness by about 14%.",
+                modal_p1_desc3: "<strong>Achievements:</strong> First prize in the China National College Students' Service Outsourcing Innovation & Entrepreneurship Competition; related patent application has been accepted by the National Intellectual Property Administration.",
+                modal_p2_title: "Pet Product Market Modeling & Business Optimization",
+                modal_p2_desc1: "<strong>Background:</strong> Based on real business data from the listed company pidan, explore user behavior patterns to optimize investment in pet product lines and recommendation strategies.",
+                modal_p2_desc2: "<strong>My Work:</strong> Conducted large-scale data collection and feature engineering, trained multiple models for customer segmentation, demand forecasting, and recommendation systems, and produced technical reports and business insights.",
+                modal_p2_desc3: "<strong>Achievements:</strong> First prize in the 'Innovation, Creativity, and Entrepreneurship' Challenge for National College Students (Business Big Data Track, Beijing Division).",
+                modal_p3_title: "Gaussian Enhancer for 3D Splatting",
+                modal_p3_desc1: "<strong>Research Direction:</strong> This project proposes 'GaussianEnhancer,' a general, network-agnostic post-processor designed to improve the rendering quality of Gaussian Splatting (GS) models, which often suffer from artifacts like blur and noise.",
+                modal_p3_desc2: "<strong>Methodology:</strong> We developed a GS-style degradation simulator to mimic real-world artifacts. The core of our solution is a Spatial Information Fusion (SIF) module, which leverages depth information of the target frame and texture details from adjacent original frames to enhance the degraded image, effectively restoring high-frequency details.",
+                modal_p3_desc3: "<strong>Contribution & Achievements:</strong> The proposed method effectively enhances the visual results of various GS models (e.g., 2DGS, 3DGS) across multiple standard datasets. The paper has been accepted by <strong>IEEE ICASSP 2025</strong>, and a related patent has been filed.",
+                modal_p4_title: "DTGS: Low-Light 3D Reconstruction",
+                modal_p4_desc1: "<strong>Research Direction:</strong> To tackle the formidable challenge of 3D scene reconstruction in extremely low-light conditions, this project proposes DTGS, an end-to-end framework that leverages the illumination-invariant properties of thermal-infrared imaging.",
+                modal_p4_desc2: "<strong>Methodology:</strong> DTGS deeply couples a RetinexNet-based thermal enhancement module with a 3DGS pipeline. Its core innovations include an <strong>Appearance Transformation Function (ATF)</strong> to adapt features across varying illumination, a <strong>Thermal Correction Module (TCM)</strong> to handle modality-specific distortions, and a dynamic cyclic training strategy for joint optimization.",
+                modal_p4_desc3: "<strong>Contribution & Achievements:</strong> We constructed a new challenging low-light thermal multi-view dataset. Experiments show that DTGS significantly outperforms state-of-the-art methods in both geometric accuracy and visual quality. The paper has been submitted to the top-tier conference <strong>AAAI</strong>."
+            },
+            zh: {
+                nav_about: "关于我",
+                nav_projects: "项目经历",
+                nav_experience: "创业经历",
+                nav_skills: "专业技能",
+                nav_contact: "联系我",
+                home_name: "马庆森",
+                home_title: "北京邮电大学 | 人工智能专业",
+                about_title: "关于我",
+                about_desc: "我叫马庆森，是 <strong>北京邮电大学</strong> 人工智能专业的一名本科生。我对AI领域充满热情，尤其关注大语言模型、计算机视觉和数据科学。我的专业排名为 <strong>15/176</strong> (GPA: 3.72)，具备扎实的理论基础和丰富的项目实践经验。我乐于探索前沿技术，并致力于用技术解决实际问题，期待在人工智能领域做出自己的贡献。",
+                projects_title: "项目经历",
+                project1_title: "大模型防御攻击任务",
+                project1_brief: "针对大模型易受提示注入、越狱等攻击的问题，设计并迭代防御方案... [点击查看详情]",
+                project2_title: "宠物产品市场建模与业务优化",
+                project2_brief: "基于上市公司pidan的真实商业数据，进行市场建模与业务优化... [点击查看详情]",
+                project3_title: "Gaussian Enhancer for 3D Splatting",
+                project3_brief: "采用 diffusion + Gaussian splatting 方法实现高质量 3D 数字资产快速重建... [点击查看详情]",
+                project4_title: "DTGS: Low-Light 3D Reconstruction",
+                project4_brief: "探索在低光照条件下利用热红外成像进行3D场景重建，提升重建精度... [点击查看详情]",
+                experience_title: "创业经历",
+                exp1_title: "校园个性化信息服务系统 (析数科技)",
+                exp1_date: "2023 - 至今 | 项目负责人",
+                exp1_desc: "主导开发“析数”微信小程序，基于推荐算法与大数据分析，实现校园信息的个性化精准推送，提升信息触达效率。",
+                exp2_title: "共享用工平台开发 (随程)",
+                exp2_date: "2023 - 至今 | 项目负责人",
+                exp2_desc: "设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。",
+                skills_title: "专业技能",
+                skill1: "机器学习 & 深度学习",
+                skill2: "自然语言处理 (NLP)",
+                skill3: "计算机视觉 (CV)",
+                skill4: "Python & C++",
+                skill5: "数据分析 & 建模",
+                skill6: "Git & GitHub",
+                contact_title: "联系我",
+                modal_p1_title: "大模型防御攻击任务",
+                modal_p1_desc1: "<strong>背景:</strong> 针对大模型易受提示注入、越狱攻击等安全威胁的问题, 研究防御方法, 提升模型鲁棒性。",
+                modal_p1_desc2: "<strong>我的工作:</strong> 结合 TrustLLM与Aligner 技术, 设计并迭代3个版本方案, 标注500条数据集并开展数据增强, 整体防御效果提升约14%。",
+                modal_p1_desc3: "<strong>成果:</strong> 全国大学生服务外包创新创业大赛一等奖；相关专利申请已获国家知识产权局受理。",
+                modal_p2_title: "宠物产品市场建模与业务优化",
+                modal_p2_desc1: "<strong>背景:</strong> 基于上市公司 pidan 的真实商业数据, 探索用户行为模式, 优化宠物产品线投资与推荐策略。",
+                modal_p2_desc2: "<strong>我的工作:</strong> 开展大规模数据收集与特征工程, 训练多模型用于客户细分、需求预测、推荐系统, 形成技术报告与商业洞察。",
+                modal_p2_desc3: "<strong>成果:</strong> 全国大学生“创新、创意与创业”挑战赛商业数据赛道(北京赛区)一等奖。",
+                modal_p3_title: "Gaussian Enhancer for 3D Splatting",
+                modal_p3_desc1: "<strong>研究方向:</strong> 本项目提出 'GaussianEnhancer'，一个通用的、与网络无关的后处理器，旨在解决高斯溅射（GS）模型渲染结果中普遍存在的模糊、噪点等瑕疵问题。",
+                modal_p3_desc2: "<strong>核心方法:</strong> 我们构建了一个GS风格的退化模拟器来复现渲染瑕疵。核心是一个空间信息融合（SIF）模块，它巧妙地结合了目标帧的深度信息与相邻原始帧的纹理细节，对退化的图像进行修复，从而显著提升渲染质量与几何细节。",
+                modal_p3_desc3: "<strong>贡献与成果:</strong> 该方法能有效提升多种主流GS模型在多个标准数据集上的渲染效果。相关论文已被国际顶级会议 <strong>IEEE ICASSP 2025</strong> 接收，并已申请相关专利。",
+                modal_p4_title: "DTGS: Low-Light 3D Reconstruction",
+                modal_p4_desc1: "<strong>研究方向:</strong> 为解决极低光照环境下三维场景重建的巨大挑战，本项目提出DTGS框架，一个利用热红外成像光照不变性的端到端重建方案。",
+                modal_p4_desc2: "<strong>核心方法:</strong> DTGS深度耦合了基于RetinexNet的热成像增强模块和3DGS重建管线。其核心创新包含一个用于适应光照变化的<strong>外观变换函数(ATF)</strong>、一个处理热成像伪影的<strong>热校正模块(TCM)</strong>，以及一个动态循环的联合优化训练策略。",
+                modal_p4_desc3: "<strong>贡献与成果:</strong> 我们构建了一个全新的、具有挑战性的低光照热成像多视图数据集。实验证明，DTGS在几何精度和视觉质量上均显著优于现有SOTA方法。相关论文已投稿至顶级会议 <strong>AAAI</strong>。"
+            }
+        };
+
+        const btnEN = document.getElementById('lang-en');
+        const btnZH = document.getElementById('lang-zh');
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            if (lang === 'en') {
+                btnEN.classList.add('active');
+                btnZH.classList.remove('active');
+                document.documentElement.lang = 'en';
+            } else {
+                btnZH.classList.add('active');
+                btnEN.classList.remove('active');
+                document.documentElement.lang = 'zh-CN';
+            }
         }
 
-        modalOverlay.addEventListener('click', (event) => {
-            if (event.target === modalOverlay) {
-                closeModal();
-            }
-        });
-
-        document.querySelectorAll('.modal-close').forEach(button => {
-            button.addEventListener('click', closeModal);
-        });
-
+        btnEN.addEventListener('click', () => switchLanguage('en'));
+        btnZH.addEventListener('click', () => switchLanguage('zh'));
+        
     </script>
 </body>
 </html>
