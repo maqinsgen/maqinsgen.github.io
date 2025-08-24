@@ -262,6 +262,32 @@
             margin-bottom: 15px;
         }
 
+        /* --- 科研成果 & 荣誉奖励 --- */
+        .list-container {
+            width: 100%;
+            max-width: 900px;
+            text-align: left;
+        }
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            background: var(--card-bg-color);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+        .list-item i {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        .list-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
         /* --- 技能区块 --- */
         .skill-item {
             display: flex;
@@ -358,6 +384,8 @@
                 <li><a href="#about" data-lang-key="nav_about">关于我</a></li>
                 <li><a href="#projects" data-lang-key="nav_projects">项目经历</a></li>
                 <li><a href="#experience" data-lang-key="nav_experience">创业经历</a></li>
+                <li><a href="#research" data-lang-key="nav_research">科研成果</a></li>
+                <li><a href="#awards" data-lang-key="nav_awards">荣誉奖励</a></li>
                 <li><a href="#skills" data-lang-key="nav_skills">专业技能</a></li>
                 <li><a href="#contact" data-lang-key="nav_contact">联系我</a></li>
             </ul>
@@ -434,6 +462,28 @@
                 <p class="date" data-lang-key="exp2_date">2023 - 至今 | 项目负责人</p>
                 <p data-lang-key="exp2_desc">设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。</p>
             </div>
+        </div>
+    </section>
+    
+    <section id="research" class="section">
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="research_title">科研成果</h2>
+        <div class="list-container">
+            <div class="list-item" data-aos="fade-up"><i class="fas fa-file-alt"></i><p data-lang-key="research1">论文《GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting》，第二作者，已被 IEEE Xplore 收录。</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-file-alt"></i><p data-lang-key="research2">论文《DTGS: Low-Light 3D Reconstruction via Dual-Stage Illumination-Aware Thermal-Infrared Gaussian Splatting》，已提交 AAAI 审稿。</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-lightbulb"></i><p data-lang-key="research3">专利《一种基于高斯重建的数字资产快速生成方法》，申请号：2024114614040。</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-lightbulb"></i><p data-lang-key="research4">专利《黑盒大语言模型的安全检测方法及装置、设备、介质》，申请号：2025105091005。</p></div>
+        </div>
+    </section>
+    
+    <section id="awards" class="section">
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="awards_title">荣誉奖励</h2>
+        <div class="list-container">
+            <div class="list-item" data-aos="fade-up"><i class="fas fa-trophy"></i><p data-lang-key="award1">全国大学生服务外包创新创业大赛一等奖 (教育部, 2024)</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-trophy"></i><p data-lang-key="award2">中国国际大学生“互联网+”创新创业大赛一等奖 (创业赛道, 北京赛区, 2025)</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-trophy"></i><p data-lang-key="award3">中国大学生“创新、创意及创业”挑战赛一等奖 (商业大数据, 北京赛区, 2025)</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-trophy"></i><p data-lang-key="award4">全国大学生数学竞赛二等奖 (中国数学会, 2023)</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-trophy"></i><p data-lang-key="award5">北京市大学生数学竞赛一等奖</p></div>
+            <div class="list-item" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-award"></i><p data-lang-key="award6">连续2学年获评校级奖学金 & 荣获【优秀学生干部】称号</p></div>
         </div>
     </section>
 
@@ -524,44 +574,58 @@
                 nav_about: "About",
                 nav_projects: "Projects",
                 nav_experience: "Experience",
+                nav_research: "Research",
+                nav_awards: "Awards",
                 nav_skills: "Skills",
                 nav_contact: "Contact",
-                home_name: "Ma Qingsen",
-                home_title: "BUPT Student | AI Major",
+                home_name: "Qingsen Ma",
+                home_title: "Beijing University of Posts and Telecommunications | AI Major",
                 about_title: "About Me",
-                about_desc: "My name is Ma Qingsen, an undergraduate student majoring in Artificial Intelligence at <strong>Beijing University of Posts and Telecommunications (BUPT)</strong>. I am passionate about the AI field, with a special focus on Large Language Models, Computer Vision, and Data Science. My academic ranking is <strong>15/176</strong> (GPA: 3.72), which provides me with a solid theoretical foundation and extensive project experience. I enjoy exploring cutting-edge technologies and am dedicated to solving real-world problems with technology, looking forward to making my own contributions to the field of AI.",
-                projects_title: "Projects",
-                project1_title: "LLM Defense Against Attacks",
-                project1_brief: "Designed and iterated on defense solutions against prompt injection and jailbreak attacks on LLMs... [Click for details]",
-                project2_title: "Pet Product Market Modeling",
-                project2_brief: "Conducted market modeling and business optimization based on real business data from the listed company pidan... [Click for details]",
+                about_desc: "My name is Qingsen Ma, an undergraduate student majoring in Artificial Intelligence at <strong>Beijing University of Posts and Telecommunications (BUPT)</strong>. I am passionate about the AI field, with a special focus on Large Language Models, Computer Vision, and Data Science. My academic ranking is <strong>15/176</strong> (GPA: 3.72), which provides me with a solid theoretical foundation and extensive project experience. I enjoy exploring cutting-edge technologies and am dedicated to solving real-world problems with technology, looking forward to making my own contributions to the field of AI.",
+                projects_title: "Project Experience",
+                project1_title: "Large Model Defense Against Attacks Task",
+                project1_brief: "Addressing the security threats such as prompt injection and jailbreaking attacks that large models are vulnerable to... [Click for details]",
+                project2_title: "Pet Product Market Modeling and Business Optimization",
+                project2_brief: "Based on the real business data of the listed company pidan, we explored user behavior patterns and optimized investment... [Click for details]",
                 project3_title: "Gaussian Enhancer for 3D Splatting",
-                project3_brief: "A general post-processor to improve rendering quality for GS models using a degradation-driven view blending method... [Click for details]",
+                project3_brief: "Achieving high-quality rapid reconstruction of 3D digital assets through diffusion + Gaussian splatting... [Click for details]",
                 project4_title: "DTGS: Low-Light 3D Reconstruction",
-                project4_brief: "Explored 3D scene reconstruction using thermal-infrared imaging in low-light conditions to improve accuracy... [Click for details]",
+                project4_brief: "Explored 3D scene reconstruction using thermal-infrared imaging in low-light conditions to improve reconstruction accuracy... [Click for details]",
                 experience_title: "Entrepreneurial Experience",
-                exp1_title: "Campus Personalized Info Service",
-                exp1_date: "2023 - Present | Project Lead",
-                exp1_desc: "Led the development of the 'Xishu' WeChat mini-program, achieving personalized and precise delivery of campus information based on recommendation algorithms and big data analysis.",
-                exp2_title: "Shared Labor Platform Development",
-                exp2_date: "2023 - Present | Project Lead",
-                exp2_desc: "Designed and promoted the 'Suicheng' shared labor platform, proposing a labor mutual recognition model and AI-powered job matching technology to address flexible employment needs.",
+                exp1_title: "Campus Personalized Information Service System (Xishu Technology)",
+                exp1_date: "2023 - Present | Project Leader",
+                exp1_desc: "Led the development of the 'Xishu' WeChat mini-program, which uses recommendation algorithms and big data analysis to precisely push campus information.",
+                exp2_title: "Development of a Shared Employment Platform (Suicheng)",
+                exp2_date: "2023 - Present | Project Leader",
+                exp2_desc: "Designed and promoted the 'Suicheng' shared employment platform, proposing a labor mutual recognition model and AI job matching technology to address flexible employment needs.",
+                research_title: "Scientific Research Achievements",
+                research1: "Paper: \"GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting\", Second Author, published in IEEE, indexed by IEEE Xplore.",
+                research2: "Paper: \"DTGS: Low-Light 3D Reconstruction via Dual-Stage Illumination-Aware Thermal-Infrared Gaussian Splatting\", submitted for review to AAAI.",
+                research3: "Patent: \"A General Rendering Enhancement Method for Gaussian Splatting Based on Spatial Fusion\", Application Number: 2024114614040.",
+                research4: "Patent: \"A Security Detection Method and Device, Equipment, and Medium for Black-Box Large Language Models\", Application Number: 2025105091005.",
+                awards_title: "Honors and Awards",
+                award1: "First Prize, National College Students' Service Outsourcing Innovation and Entrepreneurship Competition (Ministry of Education, 2024)",
+                award2: "First Prize, China International College Students' \"Internet +\" Innovation and Entrepreneurship Competition (Entrepreneurship Track, Beijing Region, 2025)",
+                award3: "First Prize, China College Students' \"Innovation, Creativity and Entrepreneurship\" Challenge (Business Big Data, Beijing Region, 2025)",
+                award4: "Second Prize, National College Students' Mathematics Competition (Chinese Mathematical Society, 2023)",
+                award5: "First Prize, Beijing College Students' Mathematics Competition",
+                award6: "University-level Scholarships (twice), Outstanding Student Leader.",
                 skills_title: "Skills",
                 skill1: "Machine & Deep Learning",
-                skill2: "Natural Language Processing",
+                skill2: "Natural Language Processing (NLP)",
                 skill3: "Computer Vision (CV)",
                 skill4: "Python & C++",
                 skill5: "Data Analysis & Modeling",
                 skill6: "Git & GitHub",
                 contact_title: "Contact Me",
-                modal_p1_title: "LLM Defense Against Attacks",
-                modal_p1_desc1: "<strong>Background:</strong> To address the security threats that large models are susceptible to, such as prompt injection and jailbreak attacks, and to study defense methods to improve model robustness.",
-                modal_p1_desc2: "<strong>My Work:</strong> Combined TrustLLM and Aligner technologies to design and iterate on three versions of the solution. Labeled a dataset of 500 entries and performed data augmentation, improving the overall defense effectiveness by about 14%.",
-                modal_p1_desc3: "<strong>Achievements:</strong> First prize in the China National College Students' Service Outsourcing Innovation & Entrepreneurship Competition; related patent application has been accepted by the National Intellectual Property Administration.",
-                modal_p2_title: "Pet Product Market Modeling & Business Optimization",
-                modal_p2_desc1: "<strong>Background:</strong> Based on real business data from the listed company pidan, explore user behavior patterns to optimize investment in pet product lines and recommendation strategies.",
-                modal_p2_desc2: "<strong>My Work:</strong> Conducted large-scale data collection and feature engineering, trained multiple models for customer segmentation, demand forecasting, and recommendation systems, and produced technical reports and business insights.",
-                modal_p2_desc3: "<strong>Achievements:</strong> First prize in the 'Innovation, Creativity, and Entrepreneurship' Challenge for National College Students (Business Big Data Track, Beijing Division).",
+                modal_p1_title: "Large Model Defense Against Attacks Task",
+                modal_p1_desc1: "<strong>Background:</strong> Addressing the security threats such as prompt injection and jailbreaking attacks that large models are vulnerable to, research on defense methods was conducted to enhance model robustness.",
+                modal_p1_desc2: "<strong>Responsibilities:</strong> Combined TrustLLM and Aligner technologies to design and iterate three versions of the solution, labeled 500 datasets and carried out data augmentation, achieving an overall defense effect improvement of approximately 14%.",
+                modal_p1_desc3: "<strong>Achievements:</strong> First Prize in the National College Students' Service Outsourcing Innovation and Entrepreneurship Competition; Patent application accepted by the National Intellectual Property Administration.",
+                modal_p2_title: "Pet Product Market Modeling and Business Optimization",
+                modal_p2_desc1: "<strong>Background:</strong> Based on the real business data of the listed company pidan, we explored user behavior patterns and optimized investment and recommendation strategies for the pet product line.",
+                modal_p2_desc2: "<strong>Responsibilities:</strong> Conducted large-scale data collection and feature engineering, trained multiple models for customer segmentation, demand forecasting, and recommendation systems, and produced technical reports and business insights.",
+                modal_p2_desc3: "<strong>Achievements:</strong> First Prize in the Business Data Track of the National College Students' \"Innovation, Creativity and Entrepreneurship\" Challenge (Beijing Region).",
                 modal_p3_title: "Gaussian Enhancer for 3D Splatting",
                 modal_p3_desc1: "<strong>Research Direction:</strong> This project proposes 'GaussianEnhancer,' a general, network-agnostic post-processor designed to improve the rendering quality of Gaussian Splatting (GS) models, which often suffer from artifacts like blur and noise.",
                 modal_p3_desc2: "<strong>Methodology:</strong> We developed a GS-style degradation simulator to mimic real-world artifacts. The core of our solution is a Spatial Information Fusion (SIF) module, which leverages depth information of the target frame and texture details from adjacent original frames to enhance the degraded image, effectively restoring high-frequency details.",
@@ -575,6 +639,8 @@
                 nav_about: "关于我",
                 nav_projects: "项目经历",
                 nav_experience: "创业经历",
+                nav_research: "科研成果",
+                nav_awards: "荣誉奖励",
                 nav_skills: "专业技能",
                 nav_contact: "联系我",
                 home_name: "马庆森",
@@ -597,6 +663,18 @@
                 exp2_title: "共享用工平台开发 (随程)",
                 exp2_date: "2023 - 至今 | 项目负责人",
                 exp2_desc: "设计并推进“随程”共享用工平台，提出劳动力互认模式和AI岗位匹配技术，解决企业灵活用工需求。",
+                research_title: "科研成果",
+                research1: "论文《GaussianEnhancer: A General Rendering Enhancer for Gaussian Splatting》，第二作者，已被 IEEE Xplore 收录。",
+                research2: "论文《DTGS: Low-Light 3D Reconstruction via Dual-Stage Illumination-Aware Thermal-Infrared Gaussian Splatting》，已提交 AAAI 审稿。",
+                research3: "专利《一种基于高斯重建的数字资产快速生成方法》，申请号：2024114614040。",
+                research4: "专利《黑盒大语言模型的安全检测方法及装置、设备、介质》，申请号：2025105091005。",
+                awards_title: "荣誉奖励",
+                award1: "全国大学生服务外包创新创业大赛一等奖 (教育部, 2024)",
+                award2: "中国国际大学生“互联网+”创新创业大赛一等奖 (创业赛道, 北京赛区, 2025)",
+                award3: "中国大学生“创新、创意及创业”挑战赛一等奖 (商业大数据, 北京赛区, 2025)",
+                award4: "全国大学生数学竞赛二等奖 (中国数学会, 2023)",
+                award5: "北京市大学生数学竞赛一等奖",
+                award6: "连续2学年获评校级奖学金 & 荣获【优秀学生干部】称号",
                 skills_title: "专业技能",
                 skill1: "机器学习 & 深度学习",
                 skill2: "自然语言处理 (NLP)",
